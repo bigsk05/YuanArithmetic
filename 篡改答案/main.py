@@ -9,7 +9,7 @@ import adbutils
 from mitmproxy import http
 from mitmproxy.tools.main import mitmdump
 
-auto_jump = True
+auto_jump = False
 
 # 拦截 HTTP 响应，检查 URL 并逐个字段替换
 def response(flow: http.HTTPFlow):
@@ -22,11 +22,11 @@ def response(flow: http.HTTPFlow):
         if "application/json" in flow.response.headers.get("Content-Type", ""):
             # 读取原始响应体
             response_text = flow.response.text
+            print(response_text)
 
             # 使用正则表达式逐个替换字段
-            response_text = re.sub(r'"answer":"[0-9><=]+"', '"answer":"1"', response_text)
-            response_text = re.sub(r'"answers":\["[0-9><=]+"\]', '"answers":["1"]', response_text)
-            response_text = re.sub(r'"status":0', '"status":0', response_text)  # 如果其他字段也需要类似替换，可以添加
+            response_text = re.sub(r'"answer":"[^"]+"', '"answer":"1"', response_text)
+            response_text = re.sub(r'"answers":\[[^\]]+\]', '"answers":["1"]', response_text)
 
             # 更新修改后的响应体
             flow.response.text = response_text
