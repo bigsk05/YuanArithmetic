@@ -9,7 +9,7 @@ import adbutils
 from mitmproxy import http
 from mitmproxy.tools.main import mitmdump
 
-auto_jump = False
+auto_jump = True
 
 # 拦截 HTTP 响应，检查 URL 并逐个字段替换
 def response(flow: http.HTTPFlow):
@@ -22,7 +22,6 @@ def response(flow: http.HTTPFlow):
         if "application/json" in flow.response.headers.get("Content-Type", ""):
             # 读取原始响应体
             response_text = flow.response.text
-            print(response_text)
 
             # 使用正则表达式逐个替换字段
             response_text = re.sub(r'"answer":"[^"]+"', '"answer":"1"', response_text)
@@ -56,7 +55,6 @@ def swipe_screen():
     
     device = adbutils.adb.device()
     device.shell(command)
-    print(command)
 
 def answer_write(answer):
     time.sleep(13)
