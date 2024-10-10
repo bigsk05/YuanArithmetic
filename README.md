@@ -13,8 +13,9 @@
 1. Clone项目
 2. 安装好Python环境
 3. 安装对于文件夹下面的requirements.txt内所要求的包
-4. 配置模拟器/实体机ADB与代理
-5. 运行
+4. 安装TrustMeAlready
+5. 配置模拟器/实体机ADB与代理
+6. 运行
 
 ### 其他说明
 
