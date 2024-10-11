@@ -8,8 +8,9 @@
 2. 劫持数据包+模拟正确答案
 3. 劫持数据包+篡改正确答案
 4. Frida调试
+
 目前V2接口已经AES加密，除了Frida和OCR都已经暂时失效
-解密办法暂时没有，想继续炸鱼可以移步(这个项目)[https://github.com/xmexg/xyks]
+解密办法暂时没有，想继续炸鱼可以移步[这个项目](https://github.com/xmexg/xyks)
 
 ### 如何使用
 
